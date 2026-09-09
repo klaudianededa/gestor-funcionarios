@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gestor-funcionarios-ui"
+    }
+  },
+  "defaultProject": "gestor-funcionarios-ui",
+  "cli": {
+    "analytics": false
+  }
 }
