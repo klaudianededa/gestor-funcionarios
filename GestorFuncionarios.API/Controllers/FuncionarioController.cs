@@ -47,5 +47,13 @@ namespace GestorFuncionarios.API.Controllers
 
             return Ok(serviceResponse);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> DeleteFuncionario(int id)
+        {
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = await _funcionarioInterface.DeleteFuncionario(id);
+
+            return Ok(serviceResponse);
+        }
     }
 }
