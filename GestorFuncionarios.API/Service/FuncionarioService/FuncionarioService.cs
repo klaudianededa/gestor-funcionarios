@@ -44,9 +44,29 @@ public class FuncionarioService : IFuncionarioInterface
         throw new NotImplementedException();
     }
 
-    public Task<ServiceResponse<FuncionarioModel>> GetFuncionarioById(int id)
+    public async Task<ServiceResponse<FuncionarioModel>> GetFuncionarioById(int id)
     {
-        throw new NotImplementedException();
+        ServiceResponse<FuncionarioModel> serviceResponse = new ServiceResponse<FuncionarioModel>();
+
+        try
+        {
+            FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == id);
+
+            if (funcionario == null)
+            {
+                serviceResponse.Dados = null;
+                serviceResponse.Mensagem = "Usuário não localizado!";
+                serviceResponse.Sucesso = false;
+            }
+            serviceResponse.Dados = funcionario;
+        }
+        catch (Exception ex)
+        {
+
+            serviceResponse.Mensagem = ex.Message;
+            serviceResponse.Sucesso = false;
+        }
+        return serviceResponse;
     }
 
     public Task<ServiceResponse<List<FuncionarioModel>>> GetFuncionarios()
