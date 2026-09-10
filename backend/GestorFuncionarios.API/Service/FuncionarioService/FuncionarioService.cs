@@ -113,11 +113,10 @@ public class FuncionarioService : IFuncionarioInterface
         }
         catch (Exception ex)
         {
-
             serviceResponse.Mensagem = ex.Message;
             serviceResponse.Sucesso = false;
         }
-        return serviceResponse;
+        return Task.FromResult(serviceResponse);
     }
 
     public async Task<ServiceResponse<List<FuncionarioModel>>> InativaFuncionario(int id)

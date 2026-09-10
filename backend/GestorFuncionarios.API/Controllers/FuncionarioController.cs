@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorFuncionarios.API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioInterface _funcionarioInterface;
