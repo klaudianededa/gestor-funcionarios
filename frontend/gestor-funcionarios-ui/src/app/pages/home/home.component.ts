@@ -24,7 +24,14 @@ export class HomeComponent implements OnInit {
       this.funcionariosGeral = data.dados;
       this.funcionarios = data.dados;
     });
-
   }
 
+  search(event : Event){
+    const target = event.target as HTMLInputElement;
+    const value = target.value.toLowerCase();
+
+    this.funcionarios = this.funcionariosGeral.filter(funcionario => {
+      return funcionario.nome.toLowerCase().includes(value);
+    })
+  }
 }
