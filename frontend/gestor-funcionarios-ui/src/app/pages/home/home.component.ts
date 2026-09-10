@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Funcionario } from 'src/app/models/Funcionarios';
+import { FuncionarioService } from 'src/app/services/funcionario.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  funcionarios: Funcionario[] = [];
+  funcionariosGeral: Funcionario[] = [];
+
+  constructor(private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
+    this.funcionarioService.GetFuncionarios().subscribe(data => {
+      const dados = data.dados;
+    });
+
   }
 
 }
