@@ -19,14 +19,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let funcionario of funcionarios">
       <td>
-        <img src=".\assets\images\Ativo.png" style="height: 20px; width: 20px;">
-        <img src=".\assets\images\Inativo.png" style="height: 20px; width: 20px;">
+        <div *ngIf="funcionario.ativo == true; else inativo">
+          <img src=".\assets\images\Ativo.png" style="height: 20px; width: 20px;">
+        </div>
+        <ng-template #inativo>
+           <img src=".\assets\images\Inativo.png" style="height: 20px; width: 20px;">
+        </ng-template>
+
       </td>
-      <td>Carlos</td>
-      <td>Eduardo</td>
-      <td>RH</td>
+      <td>{{ funcionario.nome }}</td>
+      <td>{{ funcionario.sobrenome }}</td>
+      <td>{{ funcionario.departamento }}</td>
       <td>
         <button>Editar</button>
         <button>Detalhes</button>

@@ -17,6 +17,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.funcionarioService.GetFuncionarios().subscribe(data => {
       const dados = data.dados;
+      dados.map((item) => {
+        item.dataDeCriacao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
+        item.dataDeAlteracao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
+      });
+      this.funcionariosGeral = data.dados;
+      this.funcionarios = data.dados;
     });
 
   }
