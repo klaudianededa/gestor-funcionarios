@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Funcionario } from 'src/app/models/Funcionarios';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,5 +12,7 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  createFuncionario(funcionario: Funcionario) {
 
+  }
 }
