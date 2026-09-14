@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { HomeComponent } from './pages/home/home.component';
-import { EditarComponent } from './pages/editar/editar.component';
+import { RouterModule, Routes } from '@angular/router';
 import { DetalhesComponent } from './pages/detalhes/detalhes.component';
-
+import { HomeComponent } from './pages/home/home.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { EditarComponent } from './pages/editar/editar.component';
 
 const routes: Routes = [
-{path: 'editar/:id', component: EditarComponent},
-{path: 'detalhes/:id', component:DetalhesComponent},
-{path: 'cadastro', component: CadastroComponent},
-{path: '', component: HomeComponent}
+  {path:'detalhes/:id', component: DetalhesComponent },
+  {path: '', component: HomeComponent},
+  {path: 'cadastro', component: CadastroComponent},
+  {path: 'editar/:id', component: EditarComponent}
 ];
 
 @NgModule({

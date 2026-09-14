@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Funcionario } from 'src/app/models/Funcionarios';
-import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { FuncionarioService } from 'src/app/services/funcionario-service.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,17 +12,21 @@ import { FuncionarioService } from 'src/app/services/funcionario.service';
 export class CadastroComponent implements OnInit {
 
   btnAcao = "Cadastrar!";
-  btnTitulo = "Cadastrar Funcionário"
+  btnTitulo = "Cadastrar Funcionário!";
 
-  constructor(private funcionarioService: FuncionarioService,
-    private router: Router
-  ) { }
+  constructor(private funcionarioService : FuncionarioService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
-  createFuncionario(funcionario: Funcionario) {
-    this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {
-      this.router.navigate(['/']);
-    })
+
+  createFuncionario(funcionario: Funcionario){
+
+       this.funcionarioService.CreateFuncionario(funcionario).subscribe((data) => {
+          this.router.navigate(['/']);
+       })
   }
+
+
+
 }

@@ -1,4 +1,4 @@
-export interface Response<T> {
+export interface Response<T>{
   dados: T;
   mensagem: string;
   sucesso: boolean;

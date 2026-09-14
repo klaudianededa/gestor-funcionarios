@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FuncionarioService } from 'src/app/services/funcionario-service.service';
 import { Funcionario } from 'src/app/models/Funcionarios';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FuncionarioService } from 'src/app/services/funcionario.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -11,9 +11,11 @@ import { FuncionarioService } from 'src/app/services/funcionario.service';
 export class DetalhesComponent implements OnInit{
 
    funcionario?: Funcionario;
-   id!: number;
+   id!:number;
 
-  constructor(private funcionarioService: FuncionarioService, private route: ActivatedRoute, private router : Router) { }
+  constructor(private funcionarioService: FuncionarioService, private route: ActivatedRoute, private router : Router) {
+
+  }
 
   ngOnInit(): void {
 
@@ -28,10 +30,13 @@ export class DetalhesComponent implements OnInit{
       });
   }
 
+
   InativaFuncionario(){
+
       this.funcionarioService.InativaFuncionario(this.id).subscribe((data) => {
         this.router.navigate(['']);
         }
       );
+
   }
 }

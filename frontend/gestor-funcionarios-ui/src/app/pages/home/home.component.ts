@@ -1,30 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Funcionario } from 'src/app/models/Funcionarios';
-import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { FuncionarioService } from 'src/app/services/funcionario-service.service';
+import { Funcionario } from '../../models/Funcionarios';
+import { ExcluirComponent } from '../../components/excluir/excluir.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
   funcionarios: Funcionario[] = [];
   funcionariosGeral: Funcionario[] = [];
+  columnsToDisplay = ['Situacao', 'Nome', 'Sobrenome', 'Departamento', 'Ações', 'Teste'];
 
-  constructor(private funcionarioService: FuncionarioService) { }
+
+  constructor(private funcionarioService : FuncionarioService, public matDialog: MatDialog) { }
+
 
   ngOnInit(): void {
-    this.funcionarioService.GetFuncionarios().subscribe(data => {
+    this.funcionarioService.GetFuncionarios().subscribe((data) => {
       const dados = data.dados;
-      dados.map((item) => {
-        item.dataDeCriacao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
-        item.dataDeAlteracao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
-      });
-      this.funcionariosGeral = data.dados;
-      this.funcionarios = data.dados;
-    });
+       dados.map((item) => {
+         item.dataDeCriacao = new Date(item.dataDeCriacao!).toLocaleDateString('pt-BR');
+       });
+
+      this.funcionariosGeral = dados;
+      this.funcionarios = dados;
+
+    })
   }
+
+
 
   search(event : Event){
     const target = event.target as HTMLInputElement;
@@ -34,4 +42,20 @@ export class HomeComponent implements OnInit {
       return funcionario.nome.toLowerCase().includes(value);
     })
   }
+
+
+  openDialog(id : number){
+    this.matDialog.open(ExcluirComponent,{
+      width: '350px',
+      height: '350px',
+      data: {
+        id: id
+      }
+    })
+  }
+
+
 }
+
+
+
