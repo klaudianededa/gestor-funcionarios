@@ -1,27 +1,26 @@
-# AngularEstrutura
+# Gestor de Funcionários
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+> **Sobre o Projeto:** Este sistema Full-Stack foi construído passo a passo do zero como parte prática de um curso do canal **CrisTech20** no YouTube. O projeto engloba tanto o desenvolvimento da API RESTful no backend (C#) quanto a criação e integração da interface moderna no frontend (Angular).
 
-## Development server
+## 🚀 Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Frontend**
+* Angular
+* TypeScript
+* Angular Material (MatTable, MatCard, MatDialog, MatInput, MatSelect)
+* Reactive Forms
 
-## Code scaffolding
+**Backend**
+* ASP.NET 8 Web API (C#)
+* Entity Framework Core
+* SQL Server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ✨ Funcionalidades Implementadas
 
-## Build
+O sistema foi estruturado para realizar o CRUD completo, com o frontend consumindo os endpoints da nossa própria API:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* **Tabela Dinâmica e Filtro:** Listagem de todos os registros utilizando `mat-table`, com um campo de busca que filtra os funcionários em tempo real conforme a digitação.
+* **Formulário Reutilizável:** Criação do componente isolado `app-funcionario-form`, que é reaproveitado dinamicamente tanto para a página de **Cadastro** quanto para a de **Edição**, utilizando diretivas `@Input` e `@Output`.
+* **Validação em Tempo Real:** Uso de Reactive Forms para garantir que dados obrigatórios (nome, departamento, turno, etc.) sejam preenchidos antes de liberar o botão de envio.
+* **Leitura e Inativação:** Página de Detalhes (`/detalhes/:id`) com inputs desabilitados para leitura, formatação automática de datas para o padrão brasileiro e botão de ação para alternar o status do colaborador para "Inativo".
+* **Modal de Exclusão Segura:** Integração com o `MatDialog` para abrir um modal de confirmação de exclusão (`ExcluirComponent`). A exclusão só ocorre no banco de dados após a confirmação, atualizando a listagem automaticamente.
